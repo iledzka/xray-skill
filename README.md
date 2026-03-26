@@ -104,6 +104,34 @@ Append these flags to any subcommand:
 | `--path=<dir>` | Scope analysis to a subdirectory |
 | `--exclude=<glob>` | Add extra file exclusion pattern |
 
+## When to use it
+
+**Day-to-day development:**
+- Before starting a big feature, run `/xray coupling` on the area you'll touch — know what hidden dependencies you'll trigger
+- Before a code review, run `/xray xray <file>` on any large file in the PR — focus your review on the functions that change the most
+- When you inherit unfamiliar code, run `/xray hotspots --path=<dir>` — know immediately where the pain points are
+
+**Sprint/iteration planning:**
+- Run `/xray summary` at the start of a sprint — use it to argue for tech debt tickets with concrete data
+- Run `/xray rising` to catch files quietly becoming problems — cheaper to fix now than next quarter
+- Run `/xray fragmentation` before assigning work — avoid piling more people onto already-congested code
+
+**Refactoring:**
+- Run `/xray hotspots` to pick your target — don't refactor what feels bad, refactor what the data says costs the most
+- Run `/xray trend <file>` to confirm it's getting worse (not just big but stable)
+- Run `/xray xray <file>` to find the exact functions to fix — don't rewrite the whole file, fix the 200 lines that matter
+- Run `/xray trend <file>` again weeks later to verify your refactoring actually worked
+
+**Team and org health:**
+- Run `/xray knowledge` when someone joins — show them who to talk to about each part of the codebase
+- Run `/xray knowledge-loss "Jane Doe"` when someone gives notice — prioritize knowledge transfer sessions for their high-risk files
+- Run `/xray fragmentation` to find code with no clear owner — assign ownership before it rots
+
+**Architecture decisions:**
+- Run `/xray coupling` to find bounded contexts hiding in a monolith — files that always change together may belong in the same module
+- Run `/xray age` to find stable code that could be extracted into a library
+- Run `/xray visualize hotspots` to show the whole codebase at a glance in a meeting
+
 ## How it works
 
 All analyses mine your git history — the commits, authors, and file changes already recorded in your version control system. No code is sent anywhere. The key insight from Tornhill's work: your version-control data is a behavioral log that reveals how your team actually works with the code, which is information you cannot get from the code itself.
