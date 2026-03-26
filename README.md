@@ -112,6 +112,8 @@ All analyses mine your git history — the commits, authors, and file changes al
 
 Based on [Software Design X-Rays](https://pragprog.com/titles/atevol/software-design-x-rays/) by Adam Tornhill (Pragmatic Bookshelf, 2018). The book covers these techniques in much greater depth and is highly recommended.
 
+Adam Tornhill also created [CodeScene](https://codescene.com/) — the full-featured commercial implementation of these techniques with a web UI, CI/CD integration, historical tracking, team dashboards, and much more. If you need behavioral code analysis at scale or across an organization, CodeScene is the real deal. This skill is a lightweight CLI companion for quick, local exploration inspired by the book's teachings.
+
 ## License
 
 MIT
