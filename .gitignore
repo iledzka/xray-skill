@@ -1,0 +1,4 @@
+*.pdf
+/tmp/
+.claude/plans/
+.claude/memory/
